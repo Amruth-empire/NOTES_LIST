@@ -42,8 +42,8 @@ const createNotes = async (req, res) => {
       note: newNote,
     });
   } catch (error) {
-    console.log(error.message);
-    res.status(500).json({ message: "Internal server error" });
+    console.log(error);
+    res.status(500).json({ message: "Internal server error"});
   }
 };
 
