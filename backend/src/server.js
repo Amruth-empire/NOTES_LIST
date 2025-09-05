@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["http://localhost:5173", 
-      "https://note-keepify.vercel.app" , 
-      "https://keepify-frontend.onrender.com"], // your Vite frontend URL
+      "https://notes-list-zod7.vercel.app"
+    ], // your Vite frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
