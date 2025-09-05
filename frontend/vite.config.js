@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Use the `mode` provided by Vite instead of process.env
 export default defineConfig(({ mode }) => {
   const isProd = mode === "production";
 
@@ -10,13 +9,17 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         "/api": {
-          target: isProd
-            ? "https://notes-list-three.vercel.app" // production (Vercel)
-            : "http://localhost:5001", // development (local backend)
+          target: "http://localhost:5001", // local backend
           changeOrigin: true,
-          secure: isProd, // true only in prod
         },
       },
+    },
+    define: {
+      _API_URL_: JSON.stringify(
+        isProd
+          ? "https://notes-list-three.vercel.app/api" // backend on Vercel
+          : "/api" // local proxy
+      ),
     },
   };
 });

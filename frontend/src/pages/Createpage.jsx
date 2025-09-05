@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import Navbar from "../Components/Navbar.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { _API_URL_ } from "../../vite.config.js";
+
+
+
+const api = axios.create({
+  baseURL: _API_URL_, // injected by Vite config
+});
 
 const Createpage = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const navigate = useNavigate();
+  
 
   const createNote = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/notes/create", {
-        title,
-        content,
-      });
+      await api.post("/notes/create", { title, content });
       navigate("/");
     } catch (error) {
       console.error("Error creating note:", error);
