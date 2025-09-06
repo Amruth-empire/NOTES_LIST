@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["http://localhost:5173", 
-      "https://notes-list-maker.vercel.app/"
+      "https://notes-list-maker.vercel.app"
     ], // your Vite frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
