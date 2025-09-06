@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
         "/api": {
           target: isProd
             ? "https://notes-list-three.vercel.app" // production (Vercel)
-            : "http://localhost:5001", // development (local backend)
+            : "http://localhost:3000", // development (local backend)
           changeOrigin: true,
           secure: isProd, // true only in prod
         },

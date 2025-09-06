@@ -8,10 +8,12 @@ const Createpage = () => {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const createNote = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/notes/create", {
+      await axios.post(`${API_URL}/api/notes/create`, {
         title,
         content,
       });

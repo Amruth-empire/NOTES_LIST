@@ -11,9 +11,11 @@ const Notesdetailpage = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const fetchNote = useCallback(async () => {
     try {
-      const res = await axios.get(`/api/notes/${id}`);
+      const res = await axios.get(`${API_URL}/api/notes/${id}`);
       setNote(res.data.note);
       setTitle(res.data.note.title);
       setContent(res.data.note.content);
@@ -25,7 +27,7 @@ const Notesdetailpage = () => {
   const updateNote = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`/api/notes/update/${id}`, {
+      await axios.put(`${API_URL}/api/notes/update/${id}`, {
         title,
         content,
       });
